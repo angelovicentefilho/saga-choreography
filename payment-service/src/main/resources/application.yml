@@ -1,0 +1,32 @@
+
+server:
+  port: 6001
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: payment-service
+  h2:
+    console:
+      enabled: true
+      path: /console
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:h2:file:./target/payments;AUTO_SERVER=true
+    password: test
+    username: test
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+queue:
+  order-create: ORDER_CREATED_EVENT
+  billed-order: BILLED_ORDER_EVENT
+  refund-payment: REFUND_PAYMENT_EVENT
+

@@ -1,0 +1,33 @@
+
+server:
+  port: 6002
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: stock-service
+  h2:
+    console:
+      enabled: true
+      path: /console
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:h2:file:./target/stocks;AUTO_SERVER=true
+    password: test
+    username: test
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+queue:
+  order-done: ORDER_DONE_EVENT
+  billed-order: BILLED_ORDER_EVENT
+topic:
+  order-canceled: ORDER_CANCELED_EVENT
+
